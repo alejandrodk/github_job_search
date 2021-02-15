@@ -1,22 +1,32 @@
 plugins {
     id 'java'
-    id 'application' // el proyecto funciona como una app completa
+    id 'application'
 }
 
 group 'org.platzi'
 version '0.1.0'
 
-sourceCompatibility = 1.8 // version de java
+sourceCompatibility = 1.8 // Java version
 // Bootstrap
 application {
     mainClassName = 'com.platzi.jobsearch.JobSearch'
 }
 
-// Dependencias
+// Dependencies
 repositories {
     mavenCentral()
 }
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
+    // https://mvnrepository.com/artifact/com.beust/jcommander
+    implementation group: 'com.beust', name: 'jcommander', version: '1.78'
+    // https://mvnrepository.com/artifact/io.github.openfeign/feign-core
+    implementation group: 'io.github.openfeign', name: 'feign-core', version: '10.9'
+    // https://mvnrepository.com/artifact/io.github.openfeign/feign-gson
+    implementation group: 'io.github.openfeign', name: 'feign-gson', version: '10.9'
 }
+
+// JCommander = Parse command prompt data to Java object.
+// Feign Core = Make HTTP Requests.
+// Feign Gson = Parse JSON to Java Object.
