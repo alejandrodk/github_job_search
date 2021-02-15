@@ -1,0 +1,22 @@
+plugins {
+    id 'java'
+    id 'application' // el proyecto funciona como una app completa
+}
+
+group 'org.platzi'
+version '0.1.0'
+
+sourceCompatibility = 1.8 // version de java
+// Bootstrap
+application {
+    mainClassName = 'com.platzi.jobsearch.JobSearch'
+}
+
+// Dependencias
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
