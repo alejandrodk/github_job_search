@@ -13,6 +13,7 @@ public class CLIFunctions {
         params.put("page", cliArguments.getPage());
 
         if(cliArguments.isMarkdown()) params.put("markdown", true);
+        if(cliArguments.isMinResult()) params.put("min", true);
 
         return params;
     }

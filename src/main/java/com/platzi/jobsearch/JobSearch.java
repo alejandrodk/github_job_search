@@ -34,7 +34,13 @@ public class JobSearch {
         cliArgumentsOptional.map(CLIFunctions::toMap)
                 .map(JobSearch::executeRequest)
                 .orElse(Stream.empty())
-                .forEach(System.out::println);
+                .forEach(job -> {
+                    if(job.isShowMinResult()) {
+                        System.out.println(job.toMinString());
+                    } else {
+                        System.out.println(job);;
+                    }
+                });
     }
 
     private static Stream<JobPosition> executeRequest(Map<String, Object> params) {
@@ -43,6 +49,11 @@ public class JobSearch {
 
         return Stream.of(params)
                 .map(api::jobs)
-                .flatMap(Collection::stream);
+                .flatMap(Collection::stream)
+                .peek(job -> {
+                    if(params.containsKey("min")) {
+                        job.setShowMinResult(true);
+                    }
+                });
     }
 }

@@ -42,6 +42,11 @@ public class CLIArguments {
             description = "view API commands list"
     )
     private boolean isHelp;
+    @Parameter(
+            names = "--min",
+            description = "Show short results"
+    )
+    private boolean isMinResult;
 
     public String getKeyword() { return keyword; }
 
@@ -65,6 +70,8 @@ public class CLIArguments {
         return isHelp;
     }
 
+    public boolean isMinResult() { return isMinResult; }
+
     @Override
     public String toString() {
         return "CLIArguments{" +
@@ -74,6 +81,7 @@ public class CLIArguments {
                 ", isFullTime=" + isFullTime +
                 ", isMarkdown=" + isMarkdown +
                 ", isHelp=" + isHelp +
+                ", isMinResult=" + isMinResult +
                 '}';
     }
 

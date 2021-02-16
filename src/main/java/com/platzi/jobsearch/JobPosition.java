@@ -18,6 +18,7 @@ public class JobPosition {
     private String description;
     @SerializedName("company_logo")
     private String companyLogo;
+    private boolean showMinResult;
 
     public String getId() {
         return id;
@@ -27,9 +28,7 @@ public class JobPosition {
         this.id = id;
     }
 
-    public String getType() {
-        return type;
-    }
+    public String getType() { return type; }
 
     public void setType(String type) {
         this.type = type;
@@ -99,6 +98,10 @@ public class JobPosition {
         this.companyLogo = companyLogo;
     }
 
+    public boolean isShowMinResult() { return showMinResult; }
+
+    public void setShowMinResult(boolean showMinResult) { this.showMinResult = showMinResult; }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -135,5 +138,13 @@ public class JobPosition {
                 ", description='" + description + '\'' +
                 ", companyLogo='" + companyLogo + '\'' +
                 '}';
+    }
+
+    public String toMinString() {
+        return "title: " + title + "\n" +
+                "company: " + company + "\n" +
+                "location: " + location + "\n" +
+                "type: " + type + "\n" +
+                "+-----------------------------+ \n";
     }
 }
