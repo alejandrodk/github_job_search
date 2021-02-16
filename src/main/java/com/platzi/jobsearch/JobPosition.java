@@ -1,10 +1,12 @@
 package com.platzi.jobsearch;
 
 import com.google.gson.annotations.SerializedName;
+import lombok.Data;
 
 import java.util.Map;
 import java.util.Objects;
 
+@Data
 public class JobPosition {
     private String id;
     private String type;
@@ -20,88 +22,6 @@ public class JobPosition {
     @SerializedName("company_logo")
     private String companyLogo;
     private boolean showMinResult;
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getType() { return type; }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    public String getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public String getCompany() {
-        return company;
-    }
-
-    public void setCompany(String company) {
-        this.company = company;
-    }
-
-    public String getCompanyUrl() {
-        return companyUrl;
-    }
-
-    public void setCompanyUrl(String companyUrl) {
-        this.companyUrl = companyUrl;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getCompanyLogo() {
-        return companyLogo;
-    }
-
-    public void setCompanyLogo(String companyLogo) {
-        this.companyLogo = companyLogo;
-    }
-
-    public boolean isShowMinResult() { return showMinResult; }
-
-    public void setShowMinResult(boolean showMinResult) { this.showMinResult = showMinResult; }
 
     @Override
     public boolean equals(Object o) {

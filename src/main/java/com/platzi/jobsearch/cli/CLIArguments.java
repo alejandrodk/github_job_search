@@ -1,11 +1,13 @@
 package com.platzi.jobsearch.cli;
 
 import com.beust.jcommander.Parameter;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+// this empty constructor prevent new instances creation
+@NoArgsConstructor
 public class CLIArguments {
-    CLIArguments(){
-        // this empty constructor prevent new instances creation
-    }
     // tell commander that this property is prompted
     // on the command line
     @Parameter(
@@ -47,30 +49,6 @@ public class CLIArguments {
             description = "Show short results"
     )
     private boolean isMinResult;
-
-    public String getKeyword() { return keyword; }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public int getPage() {
-        return page;
-    }
-
-    public boolean isFullTime() {
-        return isFullTime;
-    }
-
-    public boolean isMarkdown() {
-        return isMarkdown;
-    }
-
-    public boolean isHelp() {
-        return isHelp;
-    }
-
-    public boolean isMinResult() { return isMinResult; }
 
     @Override
     public String toString() {
