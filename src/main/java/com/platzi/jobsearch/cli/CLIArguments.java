@@ -6,14 +6,6 @@ public class CLIArguments {
     CLIArguments(){
         // this empty constructor prevent new instances creation
     }
-
-    private String keyword;
-    private String location;
-    private int page = 0;
-    private boolean isFullTime = false;
-    private boolean isMarkdown = false;
-    private boolean isHelp;
-
     // tell commander that this property is prompted
     // on the command line
     @Parameter(
@@ -22,43 +14,53 @@ public class CLIArguments {
             validateWith = CLIKeywordValidator.class,
             description = "Job name or keyword"
     )
-    public String getKeyword() {
-        return keyword;
-    }
+    private String keyword;
     @Parameter(
             names = {"--location", "-l"},
             description = "Job or company location"
     )
-    public String getLocation() {
-        return location;
-    }
+    private String location;
     @Parameter(
             names = {"--page", "-p"},
             description = "Each page has 50 results, default page is 0"
     )
-    public int getPage() {
-        return page;
-    }
+    private int page = 0;
     @Parameter(
             names = "--full-time",
             description = "Add this flag if you want a full time job"
     )
-    public boolean isFullTime() {
-        return isFullTime;
-    }
+    private boolean isFullTime = false;
     @Parameter(
             names = "--markdown",
             description = "View results in Markdown format"
     )
-    public boolean isMarkdown() {
-        return isMarkdown;
-    }
+    private boolean isMarkdown = false;
     @Parameter(
             names = {"--help"},
             help = true,
             validateWith = CLIHelpValidator.class,
             description = "view API commands list"
     )
+    private boolean isHelp;
+
+    public String getKeyword() { return keyword; }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public int getPage() {
+        return page;
+    }
+
+    public boolean isFullTime() {
+        return isFullTime;
+    }
+
+    public boolean isMarkdown() {
+        return isMarkdown;
+    }
+
     public boolean isHelp() {
         return isHelp;
     }

@@ -13,7 +13,7 @@ public class CommanderFunctions {
             String CLIName, Supplier<T> argumentSupplier
     ) {
         JCommander jCommander = JCommander.newBuilder()
-                .addCommand(argumentSupplier.get())
+                .addObject(argumentSupplier.get())
                 .build();
 
         jCommander.setProgramName(CLIName);
