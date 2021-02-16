@@ -38,7 +38,7 @@ public class JobSearch {
                     if(job.isShowMinResult()) {
                         System.out.println(job.toMinString());
                     } else {
-                        System.out.println(job);;
+                        System.out.println(job);
                     }
                 });
     }
@@ -50,10 +50,6 @@ public class JobSearch {
         return Stream.of(params)
                 .map(api::jobs)
                 .flatMap(Collection::stream)
-                .peek(job -> {
-                    if(params.containsKey("min")) {
-                        job.setShowMinResult(true);
-                    }
-                });
+                .peek(job -> JobPosition.updateJobStructure(params, job));
     }
 }

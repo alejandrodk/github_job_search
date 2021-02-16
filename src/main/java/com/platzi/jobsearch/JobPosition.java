@@ -2,6 +2,7 @@ package com.platzi.jobsearch;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Map;
 import java.util.Objects;
 
 public class JobPosition {
@@ -146,5 +147,11 @@ public class JobPosition {
                 "location: " + location + "\n" +
                 "type: " + type + "\n" +
                 "+-----------------------------+ \n";
+    }
+
+    static void updateJobStructure(Map<String, Object> params, JobPosition job) {
+        if(params.containsKey("min")) {
+            job.setShowMinResult(true);
+        }
     }
 }
