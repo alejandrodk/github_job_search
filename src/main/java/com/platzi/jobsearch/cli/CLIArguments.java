@@ -19,6 +19,7 @@ public class CLIArguments {
     @Parameter(
             required = true,
             descriptionKey = "KEYWORD",
+            validateWith = CLIKeywordValidator.class,
             description = "Job name or keyword"
     )
     public String getKeyword() {
@@ -55,6 +56,7 @@ public class CLIArguments {
     @Parameter(
             names = {"--help"},
             help = true,
+            validateWith = CLIHelpValidator.class,
             description = "view API commands list"
     )
     public boolean isHelp() {
