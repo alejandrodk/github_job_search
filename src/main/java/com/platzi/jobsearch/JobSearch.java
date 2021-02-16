@@ -1,14 +1,19 @@
 package com.platzi.jobsearch;
 
 import com.beust.jcommander.JCommander;
+import com.platzi.jobsearch.api.APIJobs;
 import com.platzi.jobsearch.cli.CLIArguments;
+import com.platzi.jobsearch.cli.CLIFunctions;
 
+import java.util.Collection;
 import java.util.Collections;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Stream;
 
 import static com.platzi.jobsearch.CommanderFunctions.buildCommanderWithName;
 import static com.platzi.jobsearch.CommanderFunctions.parseArguments;
+import static com.platzi.jobsearch.api.APIFunctions.buildApi;
 
 public class JobSearch {
     public static void main(String[] args) {
@@ -25,5 +30,19 @@ public class JobSearch {
                 streamOfCLI.filter(cli -> !cli.isHelp())
                 .filter(cli -> cli.getKeyword() != null)
                 .findFirst();
+
+        cliArgumentsOptional.map(CLIFunctions::toMap)
+                .map(JobSearch::executeRequest)
+                .orElse(Stream.empty())
+                .forEach(System.out::println);
+    }
+
+    private static Stream<JobPosition> executeRequest(Map<String, Object> params) {
+        String GITHUB_API = "https://jobs.github.com";
+        APIJobs api = buildApi(APIJobs.class, GITHUB_API);
+
+        return Stream.of(params)
+                .map(api::jobs)
+                .flatMap(Collection::stream);
     }
 }
